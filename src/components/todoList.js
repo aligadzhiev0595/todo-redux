@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from "react-redux";
+import { updateTodos } from '../redux/reducers/reducerTodo';
 import Todo from "./todo";
 
 
@@ -11,8 +12,8 @@ const TodoList = () => {
     const todoArray = useSelector(s => s.reducerTodo.todos);
     return (
         <ul className="todolist">
-        {todoArray
-        .filter((todo) => {
+        {todoArray ? todoArray.length === 0  ? '' :
+         todoArray.filter((todo) => {
             switch (newTodo) {
                 case 'active':{
                     return todo.isActive && !todo.isDeleted
@@ -25,13 +26,13 @@ const TodoList = () => {
                 }  
                 default: return todo && !todo.isDeleted
             }
-        })
+        }) 
         .filter((todo) => {
             return todo.todoName.includes(searchInput)
         })
         .map((el) => (
                 <Todo todoObj={el} key={el.id} name={el.todoName}/>
-            ))}
+            )): updateTodos([])}
 
         </ul>
     );

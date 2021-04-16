@@ -17,8 +17,8 @@ const AddTodo = ({todoObj}) => {
         <form className="form" onSubmit={formHandler}>
             <input className='input-form' type="text" placeholder='What needs to be done' required/>
             <div>
-            <button className={`btn btn-outline-success`} type="submit"><i class="fas fa-user-plus"></i></button>
-            <button className={`btn btn-outline-danger `} onClick={deleteAllHandler} type="button"><i class="fas fa-user-minus"></i></button>
+            <button className={`btn btn-outline-success`} type="submit"><i class="fas fa-plus"></i></button>
+            <button className={`btn btn-outline-danger `} onClick={deleteAllHandler} type="button"><i class="fas fa-minus"></i></button>
             </div>
         </form>
     );
