@@ -1,17 +1,39 @@
 import React from 'react';
+import {useSelector, useDispatch} from "react-redux";
+import Todo from "./todo";
+
+
 
 const TodoList = () => {
+    const dispatch = useDispatch();
+    const newTodo = useSelector(s => s.reducerTodo.statusBtn)
+    const searchInput = useSelector((s) => s.reducerTodo.searchInput);
+    const todoArray = useSelector(s => s.reducerTodo.todos);
     return (
-       <ul className="todolist">
-           <li className="todo">
-               <p>123</p>
-               <div className="buttons">
-                   <button type="button">1</button>
-                   <button type="button">2</button>
-                   <button type="button">3</button>
-               </div>
-           </li>
-       </ul>
+        <ul className="todolist">
+        {todoArray
+        .filter((todo) => {
+            switch (newTodo) {
+                case 'active':{
+                    return todo.isActive && !todo.isDeleted
+                }
+                case 'done':{
+                    return todo.isDone && !todo.isActive
+                }
+                case 'recently':{
+                    return todo.isDeleted && !todo.isActive || todo.isDeleted && !todo.isActive && todo.isDone || todo.isDeleted && todo.isActive && todo.isDone
+                }  
+                default: return todo && !todo.isDeleted
+            }
+        })
+        .filter((todo) => {
+            return todo.todoName.includes(searchInput)
+        })
+        .map((el) => (
+                <Todo todoObj={el} key={el.id} name={el.todoName}/>
+            ))}
+
+        </ul>
     );
 };
 
