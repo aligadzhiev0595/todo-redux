@@ -39,10 +39,7 @@ export default (state = initState, action) => {
             return {...state, statusBtn: action.statusBtn}
         }
         case EMPTY_TODO: {
-            return {
-              ...state,
-              todos: action.todo,
-            }
+            return {...state, todos: action.todos}
         }
         case DELETE_ALL: {
             return {
@@ -101,13 +98,13 @@ export const statusBtn = (status) => {
 export const setSearchInput = (newArr) => {
     return {
       type: SEARCH_INPUT,
-      searchInput: newArr,
+      searchInput: newArr
     };
 };
 
-export const emptyTodo = (newArr) => {
+export const emptyTodo = (todo) => {
     return {
         type: EMPTY_TODO,
-        todo: newArr
+        todos: todo
     };
 }
