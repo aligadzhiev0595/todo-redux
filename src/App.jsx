@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import Header from "./header";
-import SearchPanel from "./searchPanel";
-import TodoList from "./todoList";
-import AddTodo from "./addTodo";
+import Header from "./components/Header";
+import SearchPanel from "./components/SearchPanel";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 import { useSelector, useDispatch } from "react-redux";
-import { emptyTodo } from "../redux/reducers/reducerTodo";
+import { emptyTodo } from "./redux/reducers/reducerTodo";
 
-const Root = () => {
+const App = () => {
   const dispatch = useDispatch();
   const todos = useSelector((s) => s.reducerTodo.todos);
   useEffect(() => {
@@ -29,4 +29,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default App;

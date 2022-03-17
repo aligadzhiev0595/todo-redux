@@ -5,10 +5,6 @@ import {statusBtn, setSearchInput} from "../redux/reducers/reducerTodo";
 const SearchPanel = () =>{
     const dispatch = useDispatch();
     const setStatusBtn = useSelector(s => s.reducerTodo.statusBtn);
-    const searchInput = useSelector((s) => s.reducerTodo.searchInput);
-    const formHandler = (e) => {
-        e.preventDefault();
-      };
     const statusHandler = (e) => {
         dispatch(statusBtn(e.target.value))
     }

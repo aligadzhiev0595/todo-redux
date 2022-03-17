@@ -1,10 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { updateTodos } from "../redux/reducers/reducerTodo";
-import Todo from "./todo";
+import Todo from "./Todo";
 
 const TodoList = () => {
-  const dispatch = useDispatch();
   const newTodo = useSelector((s) => s.reducerTodo.statusBtn);
   const searchInput = useSelector((s) => s.reducerTodo.searchInput);
   const todos = useSelector((s) => s.reducerTodo.todos);
